@@ -1,24 +1,24 @@
 import { createStore } from "vuex";
 // Create a new store instance.
 export default createStore({
+  // Define the state of the store.
   state: {
     myList: [],
-    count: 0
+    listCount: 0,
   },
-  //exemploe scrimba lesson getters
-  //getters são funções que computam o estado da store, como uma computed property do vue
-  // getters: {
-  //   doneTodos: state => {
-  //     return state.todos.filter(todo => todo.done);
-  //   },
-  //   doneTodosCount: (state, getters) => {
-  //     return getters.doneTodos.length
-  //   }
-  // },
-  //mutations são funções que alteram o estado da store
+  //mutations are used to update the state of the store, with syncronous code.
   mutations: {
-    increment(state) {
-      state.count++;
+    addCountryToList(state, payload) {
+      if (!state.myList.includes(payload)) {
+        state.listCount++;
+        state.myList = [...state.myList, payload];
+      }
+    },
+  },
+  //actions are used to call mutations with asyncronous code.
+  actions: {
+    actionAddCountryToList(context, payload) {
+      context.commit("addCountryToList", payload);
     },
   },
 });

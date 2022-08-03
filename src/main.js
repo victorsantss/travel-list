@@ -4,11 +4,14 @@ import ApolloClient from "apollo-boost";
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import App from "./App.vue";
 import "./styles/global.css";
+import store from "./store/store";
 
 const apolloClient = new ApolloClient({
   uri: `https://countries.trevorblades.com/`,
 });
 
-createApp(App).provide(DefaultApolloClient, apolloClient).mount("#app");
+const app = createApp(App)
+  .provide(DefaultApolloClient, apolloClient)
+  .use(store);
 
-// app.use(store);
+app.mount("#app");

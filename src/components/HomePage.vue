@@ -1,6 +1,7 @@
 <script>
 import { useQuery } from "@vue/apollo-composable";
 import { computed, ref } from "vue";
+import { useStore } from "vuex";
 import gql from "graphql-tag";
 export default {
   setup() {
@@ -29,9 +30,18 @@ export default {
       }
     });
 
+    // get the store
+    const store = useStore();
+    // add country to the store
+    function addCountryToList(payload) {
+      store.dispatch("actionAddCountryToList", payload);
+    }
+
     return {
       search,
       filteredCountries,
+      addCountryToList,
+      store,
     };
   },
 };
@@ -47,8 +57,13 @@ export default {
       placeholder="Search"
     />
     <h3>Result(s): {{ filteredCountries.length }}</h3>
-    <a class="hover:text-amber-400" href="#">My List</a>
+    <a class="hover:text-amber-400" href="#"
+      >My List({{ store.state.listCount }})</a
+    >
   </header>
+  <aside>
+    <h1>teste</h1>
+  </aside>
 
   <main class="flex justify-center flex-wrap gap-10 mt-2">
     <div
@@ -69,6 +84,7 @@ export default {
         <button
           class="mt-5 px-8 py-3 rounded-full bg-amber-400 hover:bg-amber-600 duration-300"
           href="#"
+          v-on:click="addCountryToList(country)"
         >
           Add to List
         </button>
