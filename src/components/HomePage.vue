@@ -1,27 +1,59 @@
-<script setup>
+<script>
 import { useQuery } from "@vue/apollo-composable";
+import { computed, ref } from "vue";
 import gql from "graphql-tag";
+export default {
+  setup() {
+    const { result } = useQuery(gql`
+      query {
+        countries {
+          code
+          name
+        }
+      }
+    `);
 
-const { result } = useQuery(gql`
-  query {
-    countries {
-      code
-      name
-    }
-  }
-`);
+    // takes the result of the query and puts it into a ref
+    const countries = computed(() => result.value?.countries ?? []);
+    // ref to search countries
+    let search = ref("");
+
+    // filter countries based on search
+    let filteredCountries = computed(() => {
+      if (search.value) {
+        return countries.value.filter((country) =>
+          country.name.toLowerCase().includes(search.value.toLowerCase())
+        );
+      } else {
+        return countries.value;
+      }
+    });
+
+    return {
+      search,
+      filteredCountries,
+    };
+  },
+};
 </script>
 
 <template>
   <header class="sm:container mx-auto flex justify-between m-12">
     <h1>Travel List</h1>
+    <input
+      class="text-black w-1/4"
+      type="text"
+      v-model="search"
+      placeholder="Search"
+    />
+    <h3>Result(s): {{ filteredCountries.length }}</h3>
     <a class="hover:text-amber-400" href="#">My List</a>
   </header>
 
   <main class="flex justify-center flex-wrap gap-10 mt-2">
     <div
       class="border-collapse rounded-full group relative"
-      v-for="country in result?.countries"
+      v-for="country in filteredCountries"
       :key="country.code"
     >
       <img
