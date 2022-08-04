@@ -1,35 +1,50 @@
-# travel-list
+<h1 align="center">Travel List</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">Simple Single Page App created to learn Vue.js 3, GraphQL, TailwindCSS and Vuex.</p>
 
-## Recommended IDE Setup
+<h1 align="left">🎯 The Project </h1>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<p> Travel List application to practice Vue 3, GraphQL, TailwindCSS and Vuex.</p>
 
-## Customize configuration
+<h1 align="left">🛠️ Technologies used </h1>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- [Vue](https://vuejs.org/)
+- [GraphQL](https://graphql.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vuex](https://vuex.vuejs.org/)
 
-## Project Setup
+<h1 align="left">⚙️ Install </h1>
 
-```sh
-npm install
+### 🔙 Prerequisites
+
+Before starting, you will need to have installed in your computes the following tools:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [Yarn](https://yarnpkg.com/). </br>
+Besides that, it´s good to have a editor to work with your code, like [VSCode](https://code.visualstudio.com/).
+
+### 🔽 Cloning the repository
+```bash
+$ git clone https://github.com/victorsantss/travel-list.git
 ```
 
-### Compile and Hot-Reload for Development
+### 🖥️ Starting the application
 
-```sh
-npm run dev
+```bash
+# Acess the app folder
+$ cd travel-list
+
+# Install the dependencies
+$ yarn install
+
+# Start the Application
+$ yarn dev
+
+# The app will run on port:5173 - acess <http://localhost:5173>
 ```
+<br />
 
-### Compile and Minify for Production
+This project was made with 💙 by [Victor Santos](https://github.com/victorsantss)
 
-```sh
-npm run build
-```
+Contact me if you want: 
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+[![Linkedin Badge](https://img.shields.io/badge/-Victor%20Santos-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/victor-santss/)](https://www.linkedin.com/in/victor-santss/)
+[![Gmail Badge](https://img.shields.io/badge/-victords895@gmail.com-D14836?style=flat-square&logo=Gmail&logoColor=white&link=mailto:victords895@gmail.com)](mailto:victords895@gmail.com)
